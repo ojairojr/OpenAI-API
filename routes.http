@@ -1,7 +1,9 @@
+# @name get-all-prompts
 GET http://localhost:3333/prompts
 
 ###
 
+# @name upload-video
 POST http://localhost:3333/videos
 Content-Type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW
 
@@ -14,9 +16,22 @@ Content-Type: audio/mpeg
 
 ###
 
+# @name create-transcription
 POST http://localhost:3333/videos/8c766229-0113-48ed-8167-70d98474178b/transcription
 Content-Type: application/json
 
 {
   "prompt":"teto, show, rap, trap"
+}
+
+###
+
+# @name generate-completion
+POST http://localhost:3333/ai/complete
+Content-Type: application/json
+
+{
+  "videoId": "8c766229-0113-48ed-8167-70d98474178b", 
+  "template":"Atue como um grande compositor de rap brasileiro e, com base nessa letra, crie uma música bem breve: '''{transcrition}'''",
+  "temperature": 0
 }
