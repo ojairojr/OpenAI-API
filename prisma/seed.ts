@@ -52,8 +52,9 @@ async function main() {
       '''`.trim()
     }
   })
+}
 
-  main()
+main()
     .then(async () => {
       await prisma.$disconnect()
     })
@@ -62,4 +63,3 @@ async function main() {
       await prisma.$disconnect()
       process.exit(1)
     })
-}
