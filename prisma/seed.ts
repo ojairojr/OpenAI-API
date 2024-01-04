@@ -21,7 +21,6 @@ async function main() {
       - Título 2
       - Título 3
       '''
-
       Transcrição:
       '''
       {transcription}
