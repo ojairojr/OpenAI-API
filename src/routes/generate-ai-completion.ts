@@ -1,6 +1,7 @@
 import { FastifyInstance } from "fastify"
 import { prisma } from "../lib/prisma"
 import { z } from "zod"
+import { streamToResponse, OpenAIStream } from "ai"
 import { openai } from "../lib/openai"
 
 export async function generateCompletionRoute(app:FastifyInstance) {
@@ -29,8 +30,16 @@ export async function generateCompletionRoute(app:FastifyInstance) {
         {
           role: "user", content: promptMessage
         }
-      ]
+      ],
+      stream: true,
     })
-    return response
+    const stream = OpenAIStream(response)
+
+    streamToResponse(stream, reply.raw, {
+      headers: {
+        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, OPTIONS"
+      }
+    })
   })
 }
