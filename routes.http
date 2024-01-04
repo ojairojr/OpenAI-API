@@ -32,6 +32,6 @@ Content-Type: application/json
 
 {
   "videoId": "8c766229-0113-48ed-8167-70d98474178b", 
-  "template":"Atue como um grande compositor de rap brasileiro e, com base nessa letra, crie uma música bem breve: '''{transcrition}'''",
+  "prompt":"Atue como um grande compositor de rap brasileiro e, com base nessa letra, crie uma música bem breve: '''{transcrition}'''",
   "temperature": 0
 }
